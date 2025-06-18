@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: travelapp
+  namespace: dev
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: travelapp
+  template:
+    metadata:
+      labels:
+        app: travelapp
+    spec:
+      containers:
+        - name: travel
+          image: koushik0802/travel:1.0
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "200m"
